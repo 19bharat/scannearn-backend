@@ -1,0 +1,21 @@
+{
+  "name": "scannearn-backend",
+  "version": "1.0.0",
+  "description": "Scan & Earn",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main.js --local=true",
+    "prod": "nodemon main.js",
+    "debug": "DEBUG=* node main.js --local=true"
+  },
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "log4js": "3.0.6",
+    "log4js-extend": "0.2.1",
+    "nodemon": "1.18.9",
+    "socket.io": "2.2.0",
+    "redis": "2.8.0"
+  }
+}
