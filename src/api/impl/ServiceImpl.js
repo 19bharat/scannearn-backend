@@ -33,9 +33,9 @@ function postImageData(req, res) {
     global.logger.info("Received POST request for image from user: " + requestData.user);
     const image = requestData.image;
     global.logger.info(image);
-    base64Img.img(image, 'data', 'NewImage', function (err, filepath) {
-        global.logger.info('Image has been saved.');
-    });
+    // base64Img.img(image, 'data', 'NewImage', function (err, filepath) {
+    //     global.logger.info('Image has been saved.');
+    // });
     res.status(200).send({
         imageAdded: true
     });
