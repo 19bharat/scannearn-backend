@@ -6,6 +6,10 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
+//To handle multipart request
+const multer = require('multer');
+const upload = multer();
+
 let express_server;
 
 //command line flag
@@ -31,11 +35,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//To resolve CORS related issues
+//create a cors middleware
 app.use(function (req, res, next) {
+//set headers to allow cross origin request.
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
@@ -66,4 +71,4 @@ try {
 }
 
 //Registering all the apis
-require('./src/api/controllers')(app, express_server);
+require('./src/api/controllers')(app, upload, express_server);

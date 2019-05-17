@@ -1,10 +1,11 @@
 const {ServerConstants} = require('../../utilities/AppConstants.js');
 const {
     getUserStatus,
-    addUser
+    addUser,
+    postImageData
 } = require('../impl/ServiceImpl.js');
 
-module.exports = (app, express_server) => {
+module.exports = (app, upload, express_server) => {
 
     try {
 
@@ -17,6 +18,11 @@ module.exports = (app, express_server) => {
          * API to consume webrtc answer from a user
          */
         app.post(ServerConstants.API_BASE_URL + 'user/add', addUser);
+
+        /**
+         * API to upload image
+         */
+        app.post(ServerConstants.API_BASE_URL + 'user/image/upload', upload.none(), postImageData);
 
         express_server.listen(ServerConstants.EXPRESS_PORT);
 
